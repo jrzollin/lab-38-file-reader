@@ -1,0 +1,26 @@
+.log-in {
+  border: 1px solid lightgrey;
+  width: 10%;
+  float: right;
+  height: 135px;
+  padding: 1em;
+  background: #FBF9FF;
+
+  input {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+}
+
+.logged-in {
+  border: 1px solid lightgrey;
+  padding: 1em;
+  float: right;
+  height: 20px;
+  background: #FBF9FF;
+
+  p {
+    margin: 0;
+  }
+}
