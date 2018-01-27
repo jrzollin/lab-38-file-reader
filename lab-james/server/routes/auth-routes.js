@@ -7,8 +7,6 @@ const bodyParser = require('../lib/middleware/body-parser.js');
 const bearerAuth = require('../lib/middleware/bearer-auth.js');
 const requireDir = require('require-dir');
 
-// const models = requireDir(__dirname + '/../models/');
-
 const authRouter = module.exports = require('express').Router();
 
 authRouter.post('/createUser', jsonParser, (req, res, next) => {
@@ -85,7 +83,6 @@ authRouter.get('/auth/findUser', bearerAuth, (req, res, next) => {
 
 authRouter.put('/updateUser/:id', bodyParser, bearerAuth, (req, res, next) => {
   try {
-    // let model = getModel(req);
     let id = req.params.id;
 
     User.findOne({_id: id})
@@ -102,7 +99,6 @@ authRouter.put('/updateUser/:id', bodyParser, bearerAuth, (req, res, next) => {
       })
       .then(user => res.send(user))
       .catch(next);
-
   }
 
   catch(err){
@@ -110,9 +106,3 @@ authRouter.put('/updateUser/:id', bodyParser, bearerAuth, (req, res, next) => {
   }
 
 });
-
-// let getModel = (req, next) => {
-//   if(req.params.model && models[req.params.model]){
-//     return models[req.params.model];
-//   }
-// };

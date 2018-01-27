@@ -14,7 +14,6 @@ const upload = (path, key) => {
   })
     .promise()
     .then(res => {
-      console.log(res);
       return fs.remove(path)
         .then( () => res.Location);
     })

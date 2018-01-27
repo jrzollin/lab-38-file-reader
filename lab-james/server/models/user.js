@@ -18,7 +18,6 @@ userSchema.methods.attachFiles = function(files){
 
   return aws.upload(file.path, key)
     .then(url => {
-      console.log('url ', url);
       record.avatar = url;
       return record.save();
     })
