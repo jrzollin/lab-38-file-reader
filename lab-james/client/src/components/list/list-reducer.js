@@ -5,13 +5,9 @@ export default (state=initialState, action) => {
 
   switch(type){
 
-    case 'USER_CREATE': return [...state, payload];
-
-    case 'USER_ASSIGN': return [payload];
-
-    case 'USER_LOGOUT': return initialState;
+    case 'ITEM_ADD': return [...state, payload];
 
     default: return state;
-
+    
   }
 };

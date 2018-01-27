@@ -3,6 +3,7 @@
 const User = require('../models/user.js');
 const basicHTTP = require('../lib/middleware/basicHTTP.js');
 const jsonParser = require('body-parser').json();
+const bearerAuth = require('../lib/middleware/bearer-auth.js');
 
 const authRouter = module.exports = require('express').Router();
 
@@ -60,6 +61,18 @@ authRouter.get('/findUser', basicHTTP, (req, res, next) => {
         .catch( () => {
           next({statusCode: 401, message: 'Invalid password'});
         });
+    })
+    .catch(err => {
+      next(err);
+    });
+});
+
+authRouter.get('/auth/findUser', bearerAuth, (req, res, next) => {
+  User.findOne({_id: req.user._id})
+    .then(user => {
+      let token = user.generateToken();
+      res.cookie('auth', token, {maxAge: 900000});
+      res.send({user, token});
     })
     .catch(err => {
       next(err);

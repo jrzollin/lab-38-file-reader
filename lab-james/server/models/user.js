@@ -6,7 +6,7 @@ const bcrypt = require('bluebird').promisifyAll(require('bcrypt'));
 
 const userSchema = new mongoose.Schema({
   username: {type: String, required: true, unique: true},
-  password: {type: String, required: true}
+  password: {type: String, required: true},
 });
 
 userSchema.methods.hashPass = function(password){

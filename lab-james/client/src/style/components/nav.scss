@@ -1,3 +1,22 @@
-ul {
+.nav {
+  margin: 0;
+  height: 2.5em;
   background: lightgrey;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 2px solid black;
+
+  li {
+    font-size: 1.5em;
+    line-height: 1.6em;
+    list-style: none;
+    position: relative;
+    padding: 0 1em;
+  }
+
+  li:hover {
+    cursor: pointer;
+    background: black;
+    color: lightgrey;
+  }
 }
