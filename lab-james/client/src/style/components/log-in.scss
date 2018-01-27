@@ -17,10 +17,14 @@
   border: 1px solid lightgrey;
   padding: 1em;
   float: right;
-  height: 20px;
+  height: 35px;
   background: #FBF9FF;
 
   p {
     margin: 0;
+  }
+
+  button {
+    margin-top: 5px;
   }
 }

@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 
 import {userCreate} from './log-in-actions';
 import {userFind} from './log-in-actions';
+import {userLogOut} from './log-in-actions';
 
 class LogIn extends React.Component {
 
@@ -15,6 +16,7 @@ class LogIn extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.createUser = this.createUser.bind(this);
+    this.logOut = this.logOut.bind(this);
   }
 
   handleChange(e){
@@ -30,6 +32,10 @@ class LogIn extends React.Component {
     if(this.state.username && this.state.password){
       this.props.handleUserCreate(Object.assign({}, this.state));
     }
+  }
+
+  logOut(){
+    this.props.handleLogOut();
   }
 
   render(){
@@ -58,6 +64,7 @@ class LogIn extends React.Component {
                 <p key={i}>Logged in as {index.user.username}</p>
               ))
             }
+            <button onClick={this.logOut}>Log Out</button>
           </div>
         )}
       </React.Fragment>
@@ -74,6 +81,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch, getState) => ({
   handleUserCreate: user => dispatch(userCreate(user)),
   handleUserFind: user => dispatch(userFind(user)),
+  handleLogOut: () => dispatch(userLogOut()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LogIn);

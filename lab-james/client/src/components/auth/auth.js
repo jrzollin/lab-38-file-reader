@@ -1,23 +1,22 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {renderIf} from '../../lib/render-if.js';
 
-import {authInit} from '../auth/auth-actions.js';
-
-
-class Home extends React.Component {
+class Auth extends React.Component {
 
   constructor(props){
     super(props);
   }
 
-  componentWillMount(){
-    this.props.handleAuthInit();
-  }
-
   render(){
-    return(
+    return (
       <React.Fragment>
-        <h1>Test</h1>
+        {
+          renderIf(
+            this.props.users[0],
+            this.props.children
+          )
+        }
       </React.Fragment>
     )
   }
@@ -28,7 +27,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({
-  handleAuthInit: () => dispatch(authInit())
+
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);

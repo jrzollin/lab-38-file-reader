@@ -7,6 +7,9 @@ require('dotenv').config();
 
 module.exports = {
   entry: `${__dirname}/src/main.js`,
+  devServer: {
+    historyApiFallback: true,
+  },
   devtool: 'source-map',
   output: {
     filename: 'bundle.[hash].js',
@@ -19,7 +22,7 @@ module.exports = {
     new ExtractPlugin('bundle.[hash].css'),
     new DefinePlugin({
       '__SERVER_URL__': JSON.stringify(process.env.SERVER_URL),
-    })
+    }),
   ],
   module: {
     rules: [
