@@ -78,3 +78,7 @@ authRouter.get('/auth/findUser', bearerAuth, (req, res, next) => {
       next(err);
     });
 });
+
+authRouter.put('/updateUser/:id', jsonParser, bearerAuth, (req, res, next) => {
+
+});

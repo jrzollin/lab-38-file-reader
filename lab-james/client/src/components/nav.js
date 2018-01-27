@@ -15,6 +15,7 @@ class Nav extends React.Component {
           <li><Link to='/'>Home</Link></li>
           <Auth>
             <li><Link to='/list'>List</Link></li>
+            <li><Link to='/profile'>Profile</Link></li>
           </Auth>
         </ul>
       </React.Fragment>
